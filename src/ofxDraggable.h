@@ -29,6 +29,11 @@ public:
         this->x = mx - saveX;    // update x position  
         this->y = my - saveY;    // update mouse y position  
     }
+	void onDragOutside(int mx, int my, int button) {
+		if(!onPressed) return;
+        this->x = mx - saveX;    // update x position
+        this->y = my - saveY;    // update mouse y position
+    }
 	void onRelease(int x, int y, int button)
 	{
 		onPressed = false;
