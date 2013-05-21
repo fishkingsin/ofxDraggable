@@ -8,6 +8,7 @@ public:
 		saveX = 0;
 		saveY = 0;
 		onPressed = false;
+		isDraggedOut = false;
     }
 	void setPos(float x , float y)
 	{
@@ -17,6 +18,7 @@ public:
 	}
       
     void onPress(int mx, int my, int button) {  
+    	isDraggedOut = false;
         // save the offset of where the mouse was clicked...  
         // ...relative to the position of the object  
         saveX = mx - this->x;  
@@ -31,12 +33,14 @@ public:
     }
 	void onDragOutside(int mx, int my, int button) {
 		if(!onPressed) return;
+		isDraggedOut = true;
         this->x = mx - saveX;    // update x position
         this->y = my - saveY;    // update mouse y position
     }
 	void onRelease(int x, int y, int button)
 	{
 		onPressed = false;
+		isDraggedOut = false;
 	}
 	
       
@@ -60,6 +64,7 @@ public:
     }  
       
 protected:
+bool isDraggedOut;
 	bool onPressed;
     int saveX, saveY;  
 };  
