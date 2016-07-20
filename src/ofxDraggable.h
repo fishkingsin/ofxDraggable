@@ -51,14 +51,14 @@ public:
             content->draw(x, y, width, height);  
               
             // add a border if mouse is pressed or over the object  
-            if(isMousePressed()) {  
-                ofNoFill();  
-                ofSetColor(0xFF0000);  
-                ofRect(x, y, width, height);  
+            if(isMouseDown()) {
+                ofNoFill();
+                ofSetHexColor(0xFF0000);
+                ofDrawRectangle(x, y, width, height);
             } else if(isMouseOver()){  
                 ofNoFill();  
-                ofSetColor(0x00FF00);  
-                ofRect(x, y, width, height);  
+                ofSetHexColor(0x00FF00);  
+                ofDrawRectangle(x, y, width, height);
             }  
         }  
     }  
